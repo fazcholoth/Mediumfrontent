@@ -4,7 +4,7 @@ import { useState ,useEffect } from 'react'
 import { useRouter } from "next/router";
 
 
-const CustomEditor = dynamic(()=>import('./Editer'),{ssr:false})
+const CustomEditor = dynamic(()=>import('../../Components/Editer'),{ssr:false})
 
 const Home  = () => {
 
