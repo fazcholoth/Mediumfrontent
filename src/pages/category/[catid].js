@@ -3,44 +3,62 @@ import dayjs from "dayjs";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { AiOutlineBook } from "react-icons/ai";
 import { AiOutlinePlayCircle } from "react-icons/ai";
-import React, {useState ,useEffect} from "react";
-import axios from "axios";
-import { useRouter } from 'next/router'
 import server from "@/Config/config";
 
 export default function Home() {
-  const router = useRouter()
-  const [allblogs, setallblogs] = useState([]);
-
-  useEffect(() => {
-    const fetchallblogs = async () => {
-      const response = await axios.get(`${server}/blog`);
-
-      const blogs = response.data;
-      setallblogs(blogs);
-    };
-
-    fetchallblogs();
-  }, []);
-
-
-
-  const handleClick =(id)=>{
-    router.push(`/detailedblog/${id}`)
-  }
-  
-  
+  const allblogs = [
+    {
+      heading: "Good News",
+      content:
+        "Teachers are good and very usefull when it comes to the subjects that they have to get the Chance to Update",
+      creator: "Rameez",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfO37MK81JIyR1ptwqr_vYO3w4VR-iC2wqQ&usqp=CAU",
+      creatorimg:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfO37MK81JIyR1ptwqr_vYO3w4VR-iC2wqQ&usqp=CAU",
+    },
+    {
+      heading: "Good News",
+      content:
+        "Teachers are good and very usefull when it comes to the subjects that they have to get the Chance to Update",
+      creator: "Rameez",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfO37MK81JIyR1ptwqr_vYO3w4VR-iC2wqQ&usqp=CAU",
+      creatorimg:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfO37MK81JIyR1ptwqr_vYO3w4VR-iC2wqQ&usqp=CAU",
+    },
+    {
+      heading: "Good News",
+      content:
+        "Teachers are good and very usefull when it comes to the subjects that they have to get the Chance to Update",
+      creator: "Rameez",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfO37MK81JIyR1ptwqr_vYO3w4VR-iC2wqQ&usqp=CAU",
+      creatorimg:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfO37MK81JIyR1ptwqr_vYO3w4VR-iC2wqQ&usqp=CAU",
+    },
+    {
+      heading: "Good News",
+      content:
+        "Teachers are good and very usefull when it comes to the subjects that they have to get the Chance to Update",
+      creator: "Rameez",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfO37MK81JIyR1ptwqr_vYO3w4VR-iC2wqQ&usqp=CAU",
+      creatorimg:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfO37MK81JIyR1ptwqr_vYO3w4VR-iC2wqQ&usqp=CAU",
+    },
+  ];
 
   return (
     <>
       {allblogs.map((blog, index) => (
-        <div className="w-full h-full  mt-7 px-20" key={index} onClick={()=>{handleClick(blog._id)}}>
+        <div className="w-full h-full  mt-7 px-20">
           <div className="flex gap-1 mb-3 items-center font-sans">
             <div>
               <img
                 className="h-5 w-5 rounded-full pr-1"
-                src="http://res.cloudinary.com/defmnpqkz/image/upload/v1697438328/i0wzx3hskjmxivp9k6y0.jpg"
-                alt="img"
+                src={blog?.creatorimg}
+                alt=""
               />
             </div>
             <p className="font-thin text-xs">{blog?.creator} .</p>
@@ -52,7 +70,7 @@ export default function Home() {
             <div className="sm:w-10/12 width-full ">
               <h3 className="text-lg font-bold pb-3 ">{blog?.heading}</h3>
               <p className="text-xs break-all overflow-y-hidden line-clamp-3 from-gray-400 font-serif">
-                {blog?.content?.blocks?.find(block => block?.type === "paragraph")?.data?.text}
+                {blog?.content}
               </p>
             </div>
             <div>
