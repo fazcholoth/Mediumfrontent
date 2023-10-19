@@ -8,6 +8,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Shimmer from "./Shimmer";
 import server from "@/Config/config";
+// const EditorJS = dynamic(()=>import('@editorjs/editorjs'),{ssr:false})
 
 const CustomEditor = (props) => {
   const [editorInstance, setEditorInstance] = useState(null);
