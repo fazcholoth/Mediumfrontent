@@ -1,3 +1,4 @@
-const server = 'https://mediumback.onrender.com'
+const server = 'http://localhost:5000'
+const Host = 'https://mediumback.onrender.com'
 
-export default server
+export default Host
