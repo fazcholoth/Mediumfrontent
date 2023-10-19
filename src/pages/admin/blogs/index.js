@@ -10,7 +10,7 @@ import server from "@/Config/config";
 function index() {
 
 
-  const router = useRouter()
+  const router =  useRouter()
   const [allblogs, setallblogs] = useState([]);
   const [deletedpost, setdeletedpost] = useState([]);
 
