@@ -7,7 +7,7 @@ function Follow({writer}) {
         <div className="flex justify-around w-full shadow-md py-1">
           <div className="w-2/4 flex justify-around ">
             <div className="py-2"><img className="h-5 w-5 rounded-full" src={writer.image} alt="" /></div>
-            <div  className="text-left">
+            <div  className="text-left pl-2">
               <div className=""><h3 className="pt-1 text-sm">{writer.name}</h3></div>
               <div className=""><p className="text-xs">Assistant Professor</p></div>
             </div>

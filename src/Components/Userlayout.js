@@ -59,6 +59,18 @@ function Userlayout({ children }) {
     fetchrecommentedTopics();
   }, []);
 
+  const [cats, setcats] = useState([]);
+  useEffect(() => {
+    const fetchcats = async () => {
+      const response = await axios.get(`${server}/blog/cats`);
+
+      const cats = response.data;
+      setcats(cats);
+    };
+
+    fetchcats();
+  }, []);
+
 
   const categories = [
     {
@@ -87,7 +99,7 @@ function Userlayout({ children }) {
         <div className="h-full mx-1 sm:w-8/12 w-full">
           <div className="sticky w-full bottom-0 h-7 flex  gap-4 flex-wrap bg-slate-50 pl-20 ">
             <GrAdd />
-            {categories?.map((category, index) => (
+            {cats?.map((category, index) => (
               <CatHeader category={category} key={index} />
             ))}
           </div>

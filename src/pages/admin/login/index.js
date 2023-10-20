@@ -5,19 +5,18 @@ import { toast } from "react-toastify";
 import server from "@/Config/config";
 import Shimmer from "@/Components/Shimm";
 
-
-
-
+import { GrView } from 'react-icons/gr';
+import { GrHide } from 'react-icons/gr';
 
 function Adminlogin() {
 
   
-  
-  
+
   const router = useRouter()
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [loading, setloading] = useState(false);
+  const [ishide, setHide] = useState(true);
 
   const onSubmit =async (e) => {
     e.preventDefault();
@@ -75,7 +74,7 @@ if (loading) {
           <input
             type="text"
             name="createrName"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 outline-none dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Your Email"
             value={email}
             onChange={(e) => {
@@ -89,12 +88,14 @@ if (loading) {
         <div className="flex justify-center py-2">
         <div className="w-3/4 ">
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Pass Word
+            Password
           </label>
-          <input
-            type="password"
-            name="password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+       <div className="flex justify-between items-center bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+        <div className="flex-1">
+        <input
+            type={ishide?"password":"text"}
+            name='password'
+            className=" text-gray-900 text-sm outline-none block w-full p-2.5"
             placeholder="Your Password"
             value={password}
             onChange={(e) => {
@@ -102,6 +103,11 @@ if (loading) {
             }}
             required
           />
+        </div>
+        <div className="pr-2 " onClick={()=>{setHide(!ishide)}}>
+         {ishide?(<div><GrHide size={28}/></div>):(<div><GrView/></div>)} 
+        </div>
+       </div>
         </div>
         </div>
 

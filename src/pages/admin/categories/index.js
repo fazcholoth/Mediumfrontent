@@ -122,12 +122,12 @@ function index() {
           </div>
         ))}
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center mt-5">
         <div className="col-span-1 shadow-xl px-2 py-3 border-blue-200 border-2 flex-col justify-evenly">
           <div className="px-2 py-2 ">
             <label htmlFor="category">Category Name</label>
             <input
-              className="w-full shadow-lg rounded-2xl outline-slate-400 px-2"
+              className="w-full shadow-lg rounded-2xl outline-slate-400 px-2 border-2 border-gray-300"
               onChange={(e) => {setnewtopics(e.target.value)}}
               type="text"
               value={newtopics}

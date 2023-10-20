@@ -5,6 +5,8 @@ import Link from "next/link";
 import {useState,useEffect} from "react";
 import { useRouter } from "next/router";
 
+import { AiOutlineUser } from 'react-icons/ai';
+
 
 function Mainheader() {
   
@@ -19,7 +21,7 @@ function Mainheader() {
     setUser(user)
     
     
-  }, [])
+  }, [User])
 
 
   const toggleDropdown = () => {
@@ -32,7 +34,7 @@ function Mainheader() {
   
 
   const userlogout =()=>{
-    
+    toggleDropdown()
     localStorage.removeItem('user')
    
   }
@@ -60,27 +62,34 @@ function Mainheader() {
         </div>
       </div>
 
-      <div className="h-4 flex items-center justify-around gap-3 relative">
-        <div className="flex items-center justify-center gap-1">
-          <Link href='/addblog' >
+      <div className="relative h-4 flex items-center justify-between ">
+        <div className="flex items-center justify-center space-x-2">
+        <div onClick={()=>{router.push('addblog')}}>
+        
           <div>
-            <PiNotePencilDuotone className="text-gray-400" />
+          <PiNotePencilDuotone className="text-gray-400  hover:text-black" />
           </div>
-          </Link>
+          
+        
+        
+        </div>
           
           <div>
-            <p className="text-neutral-400">Write</p>
+            <p className="text-neutral-400  hover:text-black">Write</p>
           </div>
-        </div>
+        
         <div>
           {" "}
-          <BsBell className="text-gray-400" />
+          <BsBell className="text-gray-400 hover:text-black" />
         </div>
-        <div>
-          <img className="h-6 w-6 rounded-full" onClick={toggleDropdown} src={User?.image} alt="" />
+        <div onClick={toggleDropdown} className="cursor-pointer h-6 w-6 rounded-full border-[1px] border-black flex items-center justify-center">
+          
+          { User?.image?(<img className="w-6 h-6 rounded-full"  src={User?.image} alt="" />):(<AiOutlineUser/>)}
+         
         </div>
-        {isOpen&&User&&(<div  onClick={userlogout}  className="absolute right-2 top-5 bg-blue-500 px-2 ">Logout</div> )}
-          {isOpen&&!User&&(<Link href='/login' ><div className="absolute right-2 top-5 bg-blue-500 px-2 ">Login</div> </Link>)}
+        </div>
+        {isOpen&&User&&(<div  onClick={userlogout}  className="absolute right-0 top-5 bg-blue-500 px-2 ">Logout</div> )}
+          {isOpen&&!User&&(<Link href='/login' ><div className="absolute right-0 top-8 bg-blue-500 px-2 rounded-md cursor-pointer ">Login</div> </Link>)}
       </div>
     </div>
   );
